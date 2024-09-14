@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERZ IMPORTACIONES - Tienda Online de Laptops</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .header .logo {
+            margin-right: 10px;
+        }
+        .header .logo img {
+            height: 40px;
+        }
+        .header .store-name {
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .header .search-bar {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .header .search-bar input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .header .search-bar button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .header .search-bar button:hover {
+            background-color: #0056b3;
+        }
+        .header .header-actions {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .header .header-actions button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .header .header-actions button:hover {
+            background-color: #0056b3;
+        }
+        .nav {
+            background-color: #222;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 10px 20px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px;
+        }
+        .nav a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+        .nav .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .nav .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .nav .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .nav .dropdown-content a:hover {
+            background-color: #575757;
+        }
+        .nav .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
+            color: #333;
+        }
+        .product-slider {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .product-slider .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #fff;
+            text-align: center;
+        }
+        .product-slider .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .product-slider .product-details {
+            padding: 10px;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .footer .social-media {
+            margin: 10px 0;
+        }
+        .footer .social-media a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+        .footer .social-media img {
+            width: 30px;
+            height: 30px;
+        }
+        .map-container {
+            margin: 20px 0;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 800px; 
+            border-radius: 5px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .login-form, .register-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-form input, .register-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .login-form button, .register-form button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .login-form button:hover, .register-form button:hover {
+            background-color: #0056b3;
+        }
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .whatsapp-icon img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/16/16430.png" alt="Logo de MERZ IMPORTACIONES">
+            </div>
+            <div class="store-name">MERZ IMPORTACIONES</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar...">
+            <button>Buscar</button>
+        </div>
+        <div class="header-actions">
+            <button id="openLoginModal">Iniciar Sesión</button>
+            <button id="openRegisterModal">Registrar</button>
+        </div>
+    </header>
+    <nav class="nav">
+        <div class="dropdown">
+            <a href="#">Categorías</a>
+            <div class="dropdown-content">
+                <a href="#perifericos">Periféricos</a>
+                <a href="#monitores">Monitores</a>
+                <a href="#laptop">Laptops</a>
+                <a href="#pc-completa">PC's Completas</a>
+                <a href="#smartphone">Smartphones</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">Marcas</a>
+            <div class="dropdown-content">
+                <a href="#acer">Acer</a>
+                <a href="#apple">Apple</a>
+                <a href="#asus">Asus</a>
+                <a href="#dell">Dell</a>
+                <a href="#hp">HP</a>
+                <a href="#huawei">Huawei</a>
+                <a href="#lenovo">Lenovo</a>
+                <a href="#msi">MSI</a>
+            </div>
+        </div>
+        <a href="#promociones">Promociones</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="main-content">
+        <div class="section">
+            <h2>Catálogo de Productos</h2>
+            <div class="product-slider">
+                <div class="product">
+                    <img src="https://hiraoka.com.pe/media/catalog/product/a/1/a14llla_2imagen_principalsintexto.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=560&width=700&canvas=700:560" alt="Laptop Modelo 1">
+                    <div class="product-details">
+                        <h3>LENOVO</h3>
+                        <p>Laptop Gamer Lenovo LOQ de 15.6", modelo 83GS00ESLM, Intel Core i5-12450HX (12va Gen), 8 núcleos, NVIDIA GeForce RTX 3050, 24GB RAM, disco sólido de 512GB</p>
+                        <p>S/  3,699.00</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://hiraoka.com.pe/media/catalog/product/1/3/133438-1_1.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=560&width=700&canvas=700:560" alt="Laptop Modelo 2">
+                    <div class="product-details">
+                        <h3>Laptop ACER   </h3>
+                        <p>Laptop Gamer Acer Predator Helios 18 de 18", modelo PH18-72-95JD, Intel Core i9 14900HX (14va Gen), 24 núcleos, NVIDIA GeForce RTX 4080, 16GB RAM, disco sólido de 1TB.</p>
+                        <p>S/13,999.00</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://hiraoka.com.pe/media/catalog/product/m/a/macbook_air_15_in_m3_starlight_pdp_image_position_1__mxla.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=560&width=700&canvas=700:560" alt="Laptop Modelo 3">
+                    <div class="product-details">
+                        <h3>APPLE</h3>
+                        <p>Macbook Air de 15.3", procesador M3, 8GB RAM, disco sólido de 256GB, Starlight</p>
+                        <p>S/6,199.00</p>
+                    </div>
+                </div>
+                <!-- Agrega más productos según sea necesario -->
+            </div>
+        </div>
+        <div class="section map-container">
+            <h2>Encuéntranos</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.5484346847697!2d-77.03355842324934!3d-9.946299448148226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c27e5a6c7b5f%3A0x1c2e7cb6d8c87b22!2sAv.%20Universitaria%20228%2C%20Lima%201511!5e0!3m2!1ses!2spe!4v1629938310471!5m2!1ses!2spe" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="social-media">
+            <a href="https://www.facebook.com/merzimportaciones" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/20/20673.png" alt="Facebook"></a>
+            <a href="https://twitter.com/merzimportaciones" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+            <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-icon"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+        </div>
+        <p>&copy; 2024 MERZ IMPORTACIONES. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLoginModal">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form class="login-form">
+                <input type="text" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeRegisterModal">&times;</span>
+            <h2>Registrar</h2>
+            <form class="register-form">
+                <input type="text" placeholder="Nombre Completo" required>
+                <input type="email" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.product-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            // Open and close modals
+            $('#openLoginModal').click(function() {
+                $('#loginModal').show();
+            });
+            $('#closeLoginModal').click(function() {
+                $('#loginModal').hide();
+            });
+            $('#openRegisterModal').click(function() {
+                $('#registerModal').show();
+            });
+            $('#closeRegisterModal').click(function() {
+                $('#registerModal').hide();
+            });
+
+            $(window).click(function(event) {
+                if ($(event.target).is('.modal')) {
+                    $('.modal').hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
